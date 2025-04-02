@@ -121,8 +121,15 @@ http://<your-pi-ip>:1880
 
 ## 📸 Preview
 
-> ![Runnning modbus_slave.py (left) and modbus_to_mqtt.py (right)](assets/demo3.gif)
->![Runnning Node-Red UI](assets/demo5.gif)
+### ▶️ Running `modbus_slave.py` (left) and `modbus_to_mqtt.py` (right)
+<p align="center">
+  <img src="assets/demo3.gif" alt="Python Scripts Running" width="700"/>
+</p>
+
+### 🖥️ Node-RED Dashboard in Action
+<p align="center">
+  <img src="assets/demo5.gif" alt="Node-RED Dashboard" width="700"/>
+</p>
 ---
 
 ## 📌 Future Enhancements
