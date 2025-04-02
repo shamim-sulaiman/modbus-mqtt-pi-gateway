@@ -130,6 +130,7 @@ http://<your-pi-ip>:1880
 <p align="center">
   <img src="assets/demo5.gif" alt="Node-RED Dashboard" width="700"/>
 </p>
+
 ---
 
 ## 📌 Future Enhancements
