@@ -14,9 +14,48 @@ This project simulates a smart industrial tank control system using a Raspberry 
 
 ## How It Works
 
-1. A simulated Modbus server increments a tank level from 0 to 100 every 5 seconds.
-2. A Python script reads the value from Modbus register `0` and publishes it to `factory/tank`via `test.mosquitto.org`.
-3. Node-RED reads the MQTT topic and shows a **gauge** for real-time tank level and **chart** for live historical trend
+This project simulates an industrial data flow from a PLC to an IoT dashboard using standard automation protocols.
+
+### 1. Modbus Server Simulation (`modbus_slave.py`)
+
+- A Python script uses `pymodbus` to create a Modbus TCP server, simulating a PLC.
+- It continuously updates holding register `0` with a tank level that increases every 5 seconds (from 0 to 100), then resets.
+- In a real setup, this register can be populated with actual sensor readings via GPIO, I2C, or ADC.
+
+### 2. Modbus to MQTT Gateway (`modbus_to_mqtt.py`)
+
+- A second Python script acts as an edge device.
+- It reads the value from holding register `0` over Modbus TCP.
+- The data is formatted into JSON and published to the MQTT topic `/factory/tank` using the broker `test.mosquitto.org`.
+
+Example payload:
+
+    {
+      "tank_level": 75,
+      "timestamp": 1743543000
+    }
+
+### 3. Real-Time Dashboard via Node-RED
+
+- Node-RED subscribes to the MQTT topic `shamim/factory/tank`.
+- It displays the tank level using:
+  - A gauge (for current value)
+  - A line chart (for trend history)
+- The dashboard is available at:
+
+    http://<your-pi-ip>:1880/ui
+
+---
+
+## Real Data Integration (Optional)
+
+To use actual sensor data:
+
+- Replace the tank simulation logic in `modbus_slave.py` with sensor input from:
+  - GPIO-based digital sensors (e.g. float switch)
+  - Analog sensors via ADC (e.g. MCP3008, HX711)
+  - I2C/SPI sensors (e.g. ultrasonic, pressure)
+- Or, skip the simulator and read directly from a real PLC using `modbus_to_mqtt.py` as a Modbus TCP or RTU client.
 
 ---
 
