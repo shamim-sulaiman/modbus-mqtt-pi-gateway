@@ -10,11 +10,7 @@ This project simulates a smart industrial tank control system using a Raspberry 
 | `modbus_to_mqtt.py` | Reads Modbus register and publishes tank level as JSON via MQTT |
 | `.gitignore` | Prevents committing unnecessary files like `.vscode/` and Python caches |
 
----
-
 ## How It Works
-
-This project simulates an industrial data flow from a PLC to an IoT dashboard using standard automation protocols.
 
 ### 1. Modbus Server Simulation (`modbus_slave.py`)
 
@@ -41,13 +37,9 @@ Example payload:
 - It displays the tank level using:
   - A gauge (for current value)
   - A line chart (for trend history)
-- The dashboard is available at:
+- The dashboard is available at: `http://<your-pi-ip>:1880/ui`
 
-    http://<your-pi-ip>:1880/ui
-
----
-
-## Real Data Integration (Optional)
+### 4. Real Data Integration (Optional)
 
 To use actual sensor data:
 
@@ -89,8 +81,6 @@ In another terminal:
 ```bash
 python3 modbus_to_mqtt.py
 ```
-
----
 
 ## Node-RED Dashboard Setup (Optional but Recommended)
 
@@ -163,13 +153,9 @@ Deploy your flow and view the dashboard live at: `http://<your-pi-ip>:1880/ui`
   <img src="assets/demo5.gif" alt="Node-RED Dashboard" width="700"/>
 </p>
 
----
-
 ## Improvement
 
 - Add reset button to control tank via MQTT
 - Alarm node when tank > 80%
 - Log to CSV or cloud DB
 - Deploy with Docker on more powerful device
-
----
