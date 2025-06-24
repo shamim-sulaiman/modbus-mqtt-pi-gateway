@@ -15,14 +15,8 @@ This project simulates a smart industrial tank control system using a Raspberry 
 ## How It Works
 
 1. A simulated Modbus server increments a tank level from 0 to 100 every 5 seconds.
-2. A Python script reads the value from Modbus register `0` and publishes it to:
-   ```
-   factory/tank
-   ```
-   via `test.mosquitto.org`.
-3. Node-RED reads the MQTT topic and shows a:
-   - **Gauge** for real-time tank level
-   - **Chart** for live historical trend
+2. A Python script reads the value from Modbus register `0` and publishes it to `factory/tank`via `test.mosquitto.org`.
+3. Node-RED reads the MQTT topic and shows a **gauge** for real-time tank level and **chart** for live historical trend
 
 ---
 
@@ -114,8 +108,7 @@ http://<your-pi-ip>:1880
 | Gauge        | Tank Level (0–100%)                      |
 | Chart        | Y-axis 0–100, 1-min window                |
 
-Deploy your flow  
-View at: `http://<your-pi-ip>:1880/ui`
+Deploy your flow and view the dashboard live at: `http://<your-pi-ip>:1880/ui`
 
 ---
 
@@ -133,7 +126,7 @@ View at: `http://<your-pi-ip>:1880/ui`
 
 ---
 
-## Future Idea
+## Improvement
 
 - Add reset button to control tank via MQTT
 - Alarm node when tank > 80%
