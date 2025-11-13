@@ -128,10 +128,3 @@ Deploy your flow and view the dashboard live at: `http://<your-pi-ip>:1880/ui`
 <p align="center">
   <img src="assets/demo5.gif" alt="Node-RED Dashboard" width="700"/>
 </p>
-
-## Improvement
-
-- Add reset button to control tank via MQTT
-- Alarm node when tank > 80%
-- Log to CSV or cloud DB
-- Deploy with Docker on more powerful device
